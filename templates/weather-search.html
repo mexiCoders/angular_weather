@@ -29,16 +29,13 @@
                         <li class="list-group-item">
                             <strong>Humidity:</strong> <span ng-bind="index.weather.main.humidity"></span> %
                         </li>
-                        <li class="list-group-item">
-                            <strong>Sea level:</strong> <span ng-bind="index.weather.main.sea_level"></span> ft
-                        </li>
                     </ul>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>Latitude:</strong> <span ng-bind="index.weather.coord.lat"></span>
+                            <strong>Latitude:</strong> <span ng-bind="index.weather.coord.lat"></span> º
                         </li>
                         <li class="list-group-item">
-                            <strong>Longiture:</strong> <span ng-bind="index.weather.coord.lon"></span>
+                            <strong>Longitude:</strong> <span ng-bind="index.weather.coord.lon"></span> º
                         </li>
                     </ul>
                     <ul class="list-group" ng-repeat="weather in index.weather.weather">
