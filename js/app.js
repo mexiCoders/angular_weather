@@ -2,7 +2,8 @@
 
     angular.module('angularWeather', [
         'angularWeatherControllers',
-        'angularWeatherDirectives'
+        'angularWeatherDirectives',
+        'angularWeatherServices'
         ]);
 
 })();
