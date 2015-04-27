@@ -1,7 +1,8 @@
 (function () {
 
     angular.module('angularWeather', [
-        'angularWeatherControllers'
+        'angularWeatherControllers',
+        'angularWeatherDirectives'
         ]);
 
 })();
