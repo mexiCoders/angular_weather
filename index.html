@@ -19,9 +19,10 @@
             </form>
         </div><!-- col-md -->
     </div><!-- row -->
-    <div class="row" ng-show="index.weather">
+    <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="alert alert-danger" role="alert" ng-show="index.error" ng-bind="index.error"></div>
+            <div class="panel panel-primary" ng-show="!index.error && index.weather">
                 <div class="panel-heading">The weather for: <span ng-bind="index.weather.name"></span></div>
                 <div class="panel-body">
                     <ul class="list-group">
@@ -58,10 +59,10 @@
                             <strong>Description:</strong> <span ng-bind="index.weather.weather[0].description"></span>
                         </li>
                     </ul>
-                </div>
-            </div>
+                </div><!-- panel-body -->
+            </div><!-- panel -->
         </div><!-- col-md -->
-    </div>
+    </div><!-- row -->
 </div><!-- containe -->
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
