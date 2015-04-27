@@ -3,20 +3,47 @@
 <head>
     <title>Angular weather</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>{{ 'Angular weather' }}</h1>
+            <form name="weatherForm">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter city name">
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
         </div><!-- col-md -->
     </div><!-- row -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">The weather for: México</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Status:</strong> Clear
+                            <img src="http://openweathermap.org/img/w/10d.png">
+                        </li>
+                        <li class="list-group-item"><strong>Description:</strong> Sky is clear</li>
+                        <li class="list-group-item"><strong>Temperature:</strong> 297.81</li>
+                        <li class="list-group-item"><strong>Temperature minimum:</strong> 297.81</li>
+                        <li class="list-group-item"><strong>Temperature maxmium:</strong> 297.81</li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- col-md -->
+    </div>
 </div><!-- containe -->
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angularjs/angular.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
 </body>
 </html>
