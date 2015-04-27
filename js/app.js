@@ -1,5 +1,7 @@
 (function () {
 
-    angular.module('angularWeather', []);
+    angular.module('angularWeather', [
+        'angularWeatherControllers'
+        ]);
 
 })();

@@ -7,32 +7,56 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" ng-controller="indexController as index">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form name="weatherForm">
+            <form name="weatherForm" novalidate ng-submit="index.getWeatherByCityName(city)">
                 <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" placeholder="Enter city name">
+                    <input type="text" class="form-control" id="city" placeholder="Enter city name" name="city" ng-model="city">
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
             </form>
         </div><!-- col-md -->
     </div><!-- row -->
-    <div class="row">
+    <div class="row" ng-show="index.weather">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-                <div class="panel-heading">The weather for: México</div>
+                <div class="panel-heading">The weather for: <span ng-bind="index.weather.name"></span></div>
                 <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <strong>Status:</strong> Clear
-                            <img src="http://openweathermap.org/img/w/10d.png">
+                            <strong>Temperature:</strong> <span ng-bind="index.weather.main.temp"></span>
+                            </li>
+                        <li class="list-group-item">
+                            <strong>Temperature minimum:</strong> <span ng-bind="index.weather.main.temp_min"></span>
                         </li>
-                        <li class="list-group-item"><strong>Description:</strong> Sky is clear</li>
-                        <li class="list-group-item"><strong>Temperature:</strong> 297.81</li>
-                        <li class="list-group-item"><strong>Temperature minimum:</strong> 297.81</li>
-                        <li class="list-group-item"><strong>Temperature maxmium:</strong> 297.81</li>
+                        <li class="list-group-item">
+                            <strong>Temperature maxmium:</strong> <span ng-bind="index.weather.main.temp_max"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Humidity:</strong> <span ng-bind="index.weather.main.humidity"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Sea level:</strong> <span ng-bind="index.weather.main.sea_level"></span>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Latitude:</strong> <span ng-bind="index.weather.coord.lat"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Longiture:</strong> <span ng-bind="index.weather.coord.lon"></span>
+                        </li>
+                    </ul>
+                    <ul class="list-group" ng-repeat="weather in index.weather.weather">
+                        <li class="list-group-item">
+                            <strong>Status:</strong> <span ng-bind="weather.main"></span>
+                            <img ng-src="{{'http://openweathermap.org/img/w/' + weather.icon + '.png'}}">
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Description:</strong> <span ng-bind="index.weather.weather[0].description"></span>
+                        </li>
                     </ul>
                 </div>
             </div>
