@@ -4,7 +4,7 @@
         .controller('indexController', ['$http', function ($http) {
             var self = this;
             this.getWeatherByCityName = function (cityName) {
-                var apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName;
+                var apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial';
                 self.error = undefined;
                 self.weather = undefined;
                 $http({
