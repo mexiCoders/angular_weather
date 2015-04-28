@@ -3,23 +3,11 @@ describe('IndexController', function () {
         scope,
         $httpBackend;
     beforeEach(module('angularWeather'));
-    beforeEach(inject(function ($rootScope, $controller, $http, _$httpBackend_, _weatherSearchService_) {
-            scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, _$httpBackend_) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/api').
+            $httpBackend.expectGET('http://api.openweathermap.org/data/2.5/weather?q=Guadalajara&units=imperial').
                       respond({name: 'test weather name'});
-            var mockedService = {
-                getWeatherByCityName: function (cityName) {
-                    return $http({
-                        method: 'GET',
-                        url: '/api'
-                    });
-                }
-            };
-            controller = $controller('indexController', {
-                $scope: scope,
-                weatherSearchService: mockedService
-            });
+            controller = $controller('indexController');
         }));
     it('should test assignment in the controller', function () {
             controller.getWeatherByCityName('Guadalajara');
