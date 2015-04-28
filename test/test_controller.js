@@ -1,23 +1,30 @@
 describe('IndexController', function () {
-    angular.module('mockedService', [])
-        .factory(['$q', function ($q) {
-            return {
-                getWeatherByCityName: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({});
+    var controller,
+        scope,
+        $httpBackend;
+    beforeEach(module('angularWeather'));
+    beforeEach(inject(function ($rootScope, $controller, $http, _$httpBackend_, _weatherSearchService_) {
+            scope = $rootScope.$new();
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('/api').
+                      respond({name: 'test weather name'});
+            var mockedService = {
+                getWeatherByCityName: function (cityName) {
+                    return $http({
+                        method: 'GET',
+                        url: '/api'
+                    });
                 }
             };
-        }]);
-    beforeEach(module('angularWeatherControllers'));
-    beforeEach(module('mockedService'));
-    beforeEach(inject(function ($rootScope, $controller, _weatherService_) {
-            scope = $rootScope.$new()
             controller = $controller('indexController', {
                 $scope: scope,
-                weatherService: _weatherService_
+                weatherSearchService: mockedService
             });
         }));
     it('should test assignment in the controller', function () {
-        expect(controller.getWeatherByCityName('test')).toBe({});
+            controller.getWeatherByCityName('Guadalajara');
+            $httpBackend.flush();
+            expect(controller.weather).toBeDefined();
+            expect(controller.weather.name).toBe('test weather name');
     });
 });
